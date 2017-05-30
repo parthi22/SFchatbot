@@ -1,0 +1,36 @@
+<!--
+ - Created by Parthiban.Sudhaman on 28-May-17.
+ -->
+
+<aura:component description="ChatBotService" controller="HandlerChatBot"
+                implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+    <aura:attribute name="chatList" type="List" />
+    <aura:attribute name="userChat" type="String"/>
+    <div class="demo-only slds-grid" style="height:340px;max-width:340px;background:#f4f6f9;padding:1rem;">
+        <div class="slds-panel slds-grid slds-grid_vertical slds-nowrap">
+            <div class="slds-form slds-form_stacked slds-grow slds-scrollable_y">
+                <div class="slds-panel__section slds-border_bottom">
+                    <aura:iteration items="{!v.chatList}" var="chatItem">
+                        <div>
+                            <span class="slds-badge">{!chatItem.userName}</span><p>{!chatItem.chatText}</p><br/>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="demo-only slds-grid" style="height:100px;max-width:340px;background:#f4f6f9;padding:1rem;">
+        <div class="slds-panel slds-grid slds-grid_vertical slds-nowrap">
+            <div class="slds-form slds-form_stacked slds-grow slds-scrollable_y">
+                <div class="slds-panel__section slds-border_bottom">
+                    <ui:inputText class="slds-input" value="{!v.userChat}"
+                                  keyup="{!c.postUserChat}" placeholder="Chat here ..." />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<lightning:input name="chatInput" type="text" label="Chat here" value="{!v.userChat}" />-->
+    <!--<lightning:button label="Enter" type="button" onclick="{!c.doInit}"/>-->
+</aura:component>
